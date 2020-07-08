@@ -1,2 +1,28 @@
-<h1>StockQuotes#index</h1>
-<p>Find me in app/views/stock_quotes/index.html.erb</p>
+<h3>Stock Data from <%= link_to 'IEX', "https://iexcloud.io/docs/api/#attribution", 
+			class: 'special_link' %></h3>
+
+<h1>Stocks - <%= @symbols %></h1>
+
+<table>
+	<tr>
+		<th>Stock Symbol</th>
+		<th>Company</th>
+		<th>Previous Day Close</th>
+		<th>Latest Price</th>
+		<th>Change</th>
+		<th>52 Week Stock High</th>
+		<th>52 Week Stock Low</th>
+	</tr>
+
+	<% @stocks.each do |stock| %>
+	<tr class='<%= cycle 'even', 'odd' %>'>
+		<td><%= stock['symbol'] %></td>
+		<td><%= stock['companyName'] %></td>
+		<td><%= stock['previousClose'] %></td>
+		<td><%= stock['latestPrice'] %></td>
+		<td><%= stock['change'] %></td>
+		<td><%= stock['week52High'] %></td>
+		<td><%= stock['week52Low'] %></td>	
+	</tr>
+	<% end %>
+</table>
